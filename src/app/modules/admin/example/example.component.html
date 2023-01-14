@@ -1,0 +1,55 @@
+<div class="flex flex-col  w-full h-full">
+  <div class="flex  w-full" style="
+    padding: 1% 0 1% 0;
+    ">
+    <input class="" (input)="setTerm($event)" style="
+        border-radius: 25px;
+        background: #ffffff;
+        height: 40px;
+        width: 90%;" color="primary" type="text">
+    <button 
+    class="flex h-full"
+    mat-flat-button color="primary" type="button" matSuffix>
+      <mat-icon>add</mat-icon>
+      Adicionar
+    </button>
+  </div>
+  <table *ngIf="dataSource.length>0" mat-table [dataSource]="dataSource" class="table table-striped table-bordered">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="owner">
+      <th mat-header-cell *matHeaderCellDef> Propriet&aacute;rio</th>
+      <td mat-cell *matCellDef="let element"> {{element.owner}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+    <ng-container matColumnDef="font">
+      <th mat-header-cell *matHeaderCellDef> Tipo Fonte </th>
+      <td mat-cell *matCellDef="let element"> {{element.font}} </td>
+    </ng-container>
+    <!-- Star Column -->
+    <ng-container matColumnDef="actions" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions">a&ccedil;&otilde;es</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-flat-button type="button" color="primary" matSuffix>
+          <mat-icon>add</mat-icon>
+          Solicita&ccedil;&atilde;o
+        </button>
+        <button mat-flat-button color="primary" type="button" matSuffix>
+          <mat-icon>add</mat-icon>
+          Transporte
+        </button>
+        <button mat-flat-button type="button" color="primary" matSuffix>
+          <mat-icon>add</mat-icon>
+          Abrir OS
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
